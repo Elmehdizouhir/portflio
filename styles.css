@@ -142,13 +142,14 @@ nav .btn:hover {
   flex-wrap: wrap;
   padding: 50px 15px;
   background-color: #fff;
+  padding-left: 20%;
 }
 
 .about img {
   max-width: 100%;
   border-radius: 10px;
   margin-bottom: 20px;
-
+  
 }
 
 .about-text {
@@ -597,7 +598,10 @@ footer .social a:hover {
   .about p {
     font-size: 0.9rem;
   }
-
+  
+.aboutImg{
+  width: 100%;
+}
   .service .title h2 {
     font-size: 2rem;
   }
