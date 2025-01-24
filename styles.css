@@ -655,3 +655,18 @@ footer .social a:hover {
     font-size: 0.8rem;
   }
 }
+.resume-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff7f50, #ff4500); /* Orange gradient */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.resume-button:hover {
+  background: linear-gradient(45deg, #ff4500, #ff7f50); /* Reversed orange gradient on hover */
+  transform: scale(1.1);
+}
