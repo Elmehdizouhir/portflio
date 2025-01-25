@@ -11,7 +11,34 @@ body {
   background-color: #f5f5f5;
   color: #333;
 }
+.sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgba(216, 216, 216, 0.014);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0  10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.sidebar li{
+  width: 100%;
+  left: 10%;
+  margin: 20%;
+}
+.sidebar a{
+  width: 100%;
+}
 
+.menu-button {
+  display: none;
+  color: white;
+}
 /* Hero Section */
 .hero {
   position: relative;
@@ -22,6 +49,16 @@ body {
   align-items: center;
   text-align: center;
   color: #fff;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
 .hero .background-clip {
@@ -34,7 +71,7 @@ body {
   z-index: -1;
 }
 
-.hero nav {
+.hero .showSidebar {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -57,34 +94,27 @@ nav ul {
   display: flex;
   gap: 15px;
   list-style: none;
+  margin-left: 20%;
+  
   
 }
 
 nav ul li a {
   text-decoration: none;
- 
   position: relative;
   color: #fff;
   font-weight: 500;
   transition: color 0.3s ease;
+  justify-content: space-between;
 }
 
 nav ul li a:hover {
   color: #ff9800;
 }
 
-nav .btn {
-  padding: 8px 15px;
-  background-color: #ff9800;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 
-nav .btn:hover {
-  background-color: #e68a00;
+ul li:nth-child(4) {
+  justify-content:flex-end;
 }
 
 /* Content */
@@ -108,33 +138,32 @@ nav .btn:hover {
   margin-bottom: 20px;
 }
 
-.newslatter form {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.newslatter input[type="email"] {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  width: 250px;
-  font-size: 1rem;
-}
-
-.newslatter input[type="submit"] {
-  padding: 10px 15px;
-  background-color: #ff9800;
+.resume-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff7f50, #ff4500); /* Orange gradient */
   color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.3s;
 }
 
-.newslatter input[type="submit"]:hover {
-  background-color: #e68a00;
+.resume-button:hover {
+  background: linear-gradient(45deg, #ff4500, #ff7f50); /* Reversed orange gradient on hover */
+  transform: scale(1.1);
 }
+
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+.classPro{
+  background-size: cover;
+  background-position: center;
+}
+
 
 /* About Section */
 .about {
@@ -333,7 +362,72 @@ nav .btn:hover {
 .project-info .button:hover {
   background-color: #e68a00;
 }
+/* section de contact  */
+.contact-section{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #666, #666);
+  color: white;
+  text-align: center;
+}
+.contact-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
 
+  
+}
+
+.contact-item {
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.contact-section h3{
+  padding: 7%;
+}
+.contact-item h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  
+  color: #ffc107;
+}
+
+.contact-item p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #dcdcdc;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ffa500, #40e0d0);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background: linear-gradient(45deg, #40e0d0, #ffa500);
+  transform: scale(1.1);
+}
+
+.contact-button:active {
+  transform: scale(1);
+}
+.contact-section h1 span {
+  font-size: 36px;
+  animation: wave 1.5s infinite;
+  display: inline-block;
+}
 
 /* Footer */
 footer {
@@ -358,7 +452,7 @@ footer .social a:hover {
   color: #ff9800;
 }
 
-
+/* section de competance */
 .skills-section {
   max-width: 900px;
   margin: 50px auto;
@@ -490,6 +584,13 @@ footer .social a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hideOnMobile{
+    display: none;
+  }
+  .menu-button {
+    display: block; /* Afficher le bouton */
+    cursor: pointer; /* Ajouter un curseur pointer */
+  }
   nav ul {
     flex-direction: column;
     align-items: center;
@@ -575,6 +676,9 @@ footer .social a:hover {
 }
 
 @media (max-width: 480px) {
+  .sidebar{
+    width: 100%;
+  }
   .hero .content h1 {
     font-size: 2rem;
   }
@@ -654,19 +758,4 @@ footer .social a:hover {
   .contact-form button {
     font-size: 0.8rem;
   }
-}
-.resume-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(45deg, #ff7f50, #ff4500); /* Orange gradient */
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 25px;
-  transition: 0.3s;
-}
-
-.resume-button:hover {
-  background: linear-gradient(45deg, #ff4500, #ff7f50); /* Reversed orange gradient on hover */
-  transform: scale(1.1);
 }
